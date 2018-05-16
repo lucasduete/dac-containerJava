@@ -1,0 +1,14 @@
+FROM ubuntu:latest
+
+RUN apt-get update \
+	&& apt-get upgrade -y \
+	&& apt-get install -y software-properties-common \
+	&& add-apt-repository -y ppa:webupd8team/java
+
+RUN apt update \
+	&& apt install -y oracle-java8-installer \
+	&& apt install -y oracle-java8-set-default
+
+RUN javac -version
+
+CMD ["java", "-version"]
